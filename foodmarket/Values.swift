@@ -13,10 +13,23 @@ struct Values: View {
             ZStack{
                 Color(0xF4A460)
                 .edgesIgnoringSafeArea(.vertical)
-                .overlay(VStack{
+                .overlay(
+                    ZStack{
+                        HStack{
+                            NavigationLink(destination: DetailView()
+                                            .navigationBarBackButtonHidden(true)
+                                            .navigationBarHidden(true)) {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 23)
+                            }
+                            Spacer()
+                        }
+                        .padding(.top,-360)
+                    VStack{
                         RoundedRectangle(cornerRadius: 20, style: .circular)
                         .fill(Color(0xF5DEB3).opacity(0.9))
-                        .frame(width: 370, height: 700)
+                        .frame(width: 390, height: 700)
                         .padding(.top, 260)
                         .overlay(
                             VStack{
@@ -123,11 +136,15 @@ struct Values: View {
                             .padding(.bottom,260)
                         )
                     }
+                    .padding(.top, 130)
+                }
                 )
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Image(systemName: "chevron.backward").foregroundColor(.white)
-                                , trailing: Image(systemName: "ellipsis").foregroundColor(.white))
+            .navigationBarHidden(true)
+            .navigationBarItems(leading:
+                                    NavigationLink(destination: DetailView().navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
+                                    Image(systemName: "chevron.backward").foregroundColor(.white)
+                                    }, trailing: Image(systemName: "ellipsis").foregroundColor(.white))
         }
     }
 }

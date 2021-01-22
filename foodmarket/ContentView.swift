@@ -38,14 +38,14 @@ struct ContentView: View {
                 ZStack{
                 Image("Cheesehome")
                 .scaledToFit()
-                    .padding(.top, -140)
+                    .padding(.top, -60)
                 Spacer()
                     Text("Cheeses")
                     .font(.custom("Helvetica-Neue", size: 60))
                     .bold()
                     .cornerRadius(20)
                     .foregroundColor(Color.white.opacity(0.8))
-                        .padding(.bottom, 120)
+                        .padding(.bottom, 65)
                 }
                 Spacer()
                 ScrollView(.vertical){
@@ -71,15 +71,14 @@ struct ContentView: View {
                Spacer()
                 }
                 }
-            }
-            .navigationBarItems(trailing: Button(action: {}) {
-                   Image(systemName: "line.horizontal.3.decrease")
-                    .font(.custom("", size: 25))
-                    .foregroundColor(Color.white.opacity(0.75))
-                    
-                })
+                }
                 )}
-                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(trailing: Button(action: {}) {
+               Image(systemName: "line.horizontal.3.decrease")
+                .font(.custom("", size: 25))
+                .foregroundColor(Color.white.opacity(0.75))
+        })
+                .navigationBarHidden(true)
         }
     }
 }
@@ -124,7 +123,7 @@ struct ShapesImage: View{
                       Text("50$")
                         .foregroundColor(selected == postImages.View ? Color.black : Color.white)
                         Spacer()
-                        NavigationLink(destination: DetailView()) {
+                        NavigationLink(destination: DetailView().navigationBarHidden(true).navigationBarHidden(true)) {
                             Image(systemName: "plus")
                                 .foregroundColor(selected == postImages.View ? Color.black : Color.white)
                         }

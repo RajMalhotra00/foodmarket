@@ -19,6 +19,18 @@ struct DetailView: View {
                 .edgesIgnoringSafeArea(.vertical)
                 .overlay(
                     ZStack{
+                    HStack{
+                        NavigationLink(destination: ContentView()
+                                        .navigationBarBackButtonHidden(true)
+                                        .navigationBarHidden(true)) {
+                        Image(systemName: "chevron.backward")
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 23)
+                        }
+                        Spacer()
+                    }
+                    .padding(.top,-360)
+                    ZStack{
                         RoundedRectangle(cornerRadius: 20, style: .circular)
                         .fill(Color(0xF5DEB3).opacity(0.9))
                         .frame(width: 200, height: 200)
@@ -77,7 +89,7 @@ struct DetailView: View {
                         .foregroundColor(Color.black.opacity(0.8))
                         
                         HStack{
-                            NavigationLink(destination: Values()) {
+                            NavigationLink(destination: Values().navigationBarBackButtonHidden(true).navigationBarHidden(true)) {
                                 Text("About product")
                                     .bold()
                                 Image(systemName: "chevron.right")
@@ -116,14 +128,18 @@ struct DetailView: View {
                             selectedFavorites = true
                         }
                         .padding(.top, 520)
+                    
+                    }.padding(.top, 130)
                     }
                 )
+                    
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading:
-                                    NavigationLink(destination: ContentView()) {
-                                    Image(systemName: "chevron.backward").foregroundColor(.white)
-                                    }
+            .navigationBarHidden(true)
+            .navigationBarItems(leading: NavigationLink(destination: ContentView()
+                                                    .navigationBarBackButtonHidden(true)
+                                                    .navigationBarHidden(true)) {
+                                                    Image(systemName: "chevron.backward").foregroundColor(.white)
+                                                    }
                                 , trailing: Image(systemName: "ellipsis").foregroundColor(.white))
         }
     }
